@@ -1,0 +1,9 @@
+<h1> List of Friends </h1>
+
+{% for friend in object_list %}
+
+<h3>Name: {{friend.friend}} Age: {{friend.age}} State: {{friend.state}}</h3>
+<h3> {{friend.movie.all}}</h3>
+
+
+{% endfor %}

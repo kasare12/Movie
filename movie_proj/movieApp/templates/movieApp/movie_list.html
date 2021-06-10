@@ -1,0 +1,8 @@
+<h1> List of Movies in Database </h1>
+
+{% for i in object_list %}
+{% for friend in i.friend_set.all  %}
+<h3> Movie: {{i.title}} Year: {{i.year}} Lead Actor/Actress: {{i.lead_actor_actress}}</h3>
+<h3> {{ friend.city }} </h3>
+{% endfor %}
+{% endfor %}
