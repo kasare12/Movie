@@ -3,7 +3,8 @@
 {% for friend in object_list %}
 
 <h3>Name: {{friend.friend}} Age: {{friend.age}} State: {{friend.state}}</h3>
-<h3> {{friend.movie.all}}</h3>
+{% for movie in friend.movie.all %}
+{{movie.title}}
 
-
+{% endfor %}
 {% endfor %}

@@ -13,7 +13,7 @@ class Friend(models.Model):
         return str(self.friend)
 
 class Movie(models.Model):
-    friend = models.ManyToManyField(Friend)
+    friend = models.ManyToManyField(Friend, related_name = "movie")
     title = models.CharField(max_length = 200)
     year = models.IntegerField(blank = True)
     genre = models.CharField(max_length = 50, blank = True)

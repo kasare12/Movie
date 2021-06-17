@@ -15,10 +15,34 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from movieApp.views import MovieListView, FriendListView
+from django.conf.urls.static import static
+from django.conf import settings
+from movieApp import views
+from commentsApp.views import CommentCreateView
+from movieApp.views import ( 
+    MovieListView, 
+    FriendListView,
+    MovieCreateView,
+    MovieUpdateView,
+    MovieDetailView,
+    SignUpView,
+    FriendDetailView,
+    MovieMyView
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', MovieListView.as_view(), name="movie_list"),
     path('friends/', FriendListView.as_view(), name="friend_list"),
+    path('addmovie/', MovieCreateView.as_view(), name="movie_create"),
+    path('updatemovie/<int:pk>/', MovieUpdateView.as_view(), name="movie_update"),
+    path('moviedetail/<int:pk>/', MovieDetailView.as_view(), name="movie_detail"),
+    path('signup/', SignUpView.as_view(), name="signup"),
+    path('frienddetail/<int:pk>/', FriendDetailView.as_view(), name="friend_detail"),
+    path('moviemyview/', MovieMyView.as_view(), name="movie_myview"),
+    path('createcomment/<movie>/', CommentCreateView.as_view(), name="create_comment"),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
